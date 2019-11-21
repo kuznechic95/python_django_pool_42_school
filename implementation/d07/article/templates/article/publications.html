@@ -1,0 +1,29 @@
+{% extends 'base.html' %} 
+{% block headlines %}
+Your publications
+{% endblock %}
+{% block content %} 
+<h1>Your publications</h1>
+{% if user.is_authenticated %}
+<table class='table'>
+	<th>Creation date</th>
+	<th>Title</th>
+	<th>Synopsis</th>
+	{% for article in object_list %}
+		{% if article.author == user %} 
+		<tr>
+	    	<td>{{ article.created|date }}</td>
+	    	<td><a href="{% url 'detail' pk=article.id %}">{{ article.title }}</a></td>
+	    	<td>{{ article.synopsis }}</td>
+	    </tr>
+	    {% endif %}
+	{% endfor %}
+</table>
+ <form class="form-group" action="{% url 'publish' %}" method="GET">
+  <input class="btn btn-primary"  type="submit" value="Publish">
+</form> 
+{% else %}
+Restricted area, please login
+{% endif %}
+
+{% endblock %}

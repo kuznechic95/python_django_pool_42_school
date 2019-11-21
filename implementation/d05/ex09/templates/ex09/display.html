@@ -1,0 +1,19 @@
+{% if people %}
+    <table style="width:100%">
+      <tr>
+        <th>name</th>
+        <th>homeworld</th>
+        <th>climate</th>
+      </tr>
+        {% for human in people %}
+          <tr>
+              <td>{{ human.name }}</td>
+              <td>{{ human.homeworld__name }}</td>
+              <td>{{ human.homeworld__climate }}</td>
+          </tr>
+        {% endfor %}
+    </table>
+{% else %}
+    No data available, please use the following command line before use:<br>
+                            python3 manage.py loaddata ex09/resources/ex09_initial_data.json
+{% endif %}

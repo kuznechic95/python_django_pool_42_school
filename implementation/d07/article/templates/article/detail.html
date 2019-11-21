@@ -1,0 +1,23 @@
+{% extends 'base.html' %} 
+
+{% block headlines %}
+Article details
+{% endblock %}
+
+{% block content %} 
+<h1>Article details</h1>
+{% if user.is_authenticated %}
+	<h2>{{ object.title }}</h2>
+	<h3>{{ object.synopsis }}</h3>
+	<p>{{ object.content }}</p>
+	<p>Author: {{ object.author }}</p>
+	<p>Created: {{ object.created|date }}</p>
+	<form class="form-group" action="{% url 'add_favorite' pk=object.id  %}" method="POST">
+		{% csrf_token %}
+		<input class="btn btn-primary"  type="submit" value="Add to favorites">
+	</form> 
+{% else %}
+Restricted area, please login
+{% endif %}
+
+{% endblock %}

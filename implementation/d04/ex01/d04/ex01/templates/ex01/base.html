@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    {% block title %}{% endblock %}
+    {% block style %}{% endblock %}
+</head>
+
+<body>
+    {% include 'ex01/nav.html' %}
+    <h1>{{title}}</h1>
+    {% block content %}{% endblock %}
+</body>
+</html>

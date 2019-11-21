@@ -1,0 +1,25 @@
+  
+{% extends 'base.html' %} 
+
+{% block headlines %}
+Favorite list
+{% endblock %}
+
+{% block content %} 
+<h1>Your favorites</h1>
+{% if user.is_authenticated %}
+<table class='table'>
+	<th>Title</th>
+	<th>Author</th>
+	{% for favorite in object_list %}
+		<tr>
+	    	<td><a href="{% url 'detail' pk=favorite.article.id %}">{{ favorite.article.title }}</a></td>
+	    	<td>{{ favorite.user }}</td>
+	    </tr>
+	{% endfor %}
+</table>
+{% else %}
+Restricted area, please login
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Page Title</title>
+    </head>
+    <body>
+        <nav>
+            <a href="/">Life Pro Tips</a>
+            {% if request.user.is_authenticated %}
+                <a href="/logout">logout</a>
+            {% else%}
+                <a href="/login">auth</a>
+                <a href="/signup">register</a>
+            {% endif %}
+            <p>Hello
+            {% if request.user.is_authenticated %}
+                {{ request.user.username }} Rep: {{ request.user.reputation.rep }}
+            {% elif request.COOKIES.username %}
+                {{ request.COOKIES.username }}
+            {% endif %}
+            </p>
+        </nav>
+        {% block content %}
+        {% endblock %}
+    </body>
+</html>

@@ -1,0 +1,7 @@
+{% block form %}
+<h1>New Post</h1>
+<form role="form" action="/ex02/post_new" method="POST" class="post-form">{% csrf_token %}
+    {{ form.as_p }}
+    <button type="submit" class="save btn btn-default">Submit</button>
+</form>
+{% endblock %}

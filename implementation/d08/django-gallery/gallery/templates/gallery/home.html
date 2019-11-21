@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>
+    Gallery
+  </title>
+{% load bootstrap3 %}
+{% load static %}
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery=1 %}
+<style>
+  body {
+    background-image: url("{% static 'img/background.jpg' %}");
+  }
+</style>
+</head>
+<body>
+    {# Display django.contrib.messages as Bootstrap alerts #}
+    {% bootstrap_messages %}
+    <div class="container">
+    <h2>Add image</h2>
+    <form class="form-group" enctype="multipart/form-data" method="post" action="{% url 'add_image' %}">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <button class="btn btn-primary" type="submit">Add</button>
+    </form>
+    <h2>Gallery</h2>
+    <div class="gallery">
+        {% for image_object in object_list %}
+          <div class="row">
+            <div class="col-md-4">
+              <div class="thumbnail">
+                  <img src="{{ image_object.image.url}}" alt="{{ image_object.title }}" style="width:100%">
+                  <div class="caption">
+                    <p>{{ image_object.title }}</p>
+                  </div>
+                </a>
+              </div>
+            </div>
+        {% endfor %}
+    </div>
+
+  </div>
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Star War Episodes</title>
+</head>
+<body>
+<table>
+    <tr>
+        <th>Episode Number</th>
+        <th>Title</th>
+        <th>Opening Crawl</th>
+        <th>Producer</th>
+        <th>Date</th>
+        <th>Director</th>
+    </tr>
+     {% for elem in data %}
+    <tr>
+        <td style="padding: 10px; border: 1px solid black;">{{elem.episode_nb}}</td>
+        <td style="padding: 10px; border: 1px solid black;">{{elem.title}}</td>
+        <td style="padding: 10px; border: 1px solid black;">{{elem.opening_crawl}}</td>
+        <td style="padding: 10px; border: 1px solid black;">{{elem.producer}}</td>
+        <td style="padding: 10px; border: 1px solid black;">{{elem.release_date}}</td>
+        <td style="padding: 10px; border: 1px solid black;">{{elem.director}}</td>
+    </tr>
+    {% endfor %}
+</table>
+</body>
+</html>

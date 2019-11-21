@@ -1,0 +1,31 @@
+{% extends 'base.html' %} 
+
+{% block headlines %}
+Article list
+{% endblock %}
+
+{% block content %} 
+<h1>Articles</h1>
+<table class='table'>
+	<th>Title</th>
+	<th>Synopsis</th>
+	<th>Writer</th>
+	<th>Created</th>
+	<th>Current DateTime</th>
+	<th></th>
+	{% for article in object_list %}
+	<tr>
+	    <td>{{ article.title }}</td>
+    	<td class="myclass">{{ article.synopsis }}</td>
+     	<td>{{ article.author }}</td>
+    	<td>{{article.created }}</td>
+	    <td>{% now 'r' %}</td>
+		<td><form class="form-group " action="{% url 'detail' pk=article.id %}">
+			<input  class="btn btn-primary" type="submit" value="Read" />
+		</form></td>
+		</tr>
+		
+	{% endfor %}
+</table>
+
+{% endblock %}

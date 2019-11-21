@@ -1,0 +1,23 @@
+{% extends "ex/base.html" %}
+{% block content %}
+    {% if request.user.is_authenticated %}
+      <h2>Create Tip</h2>
+      <form action="createtip" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Create Tip</button>
+      </form>
+    {% endif %}
+    {% for tip in tips %}
+        <h2>{{ tip.text }}</h2>
+        <p>{{ tip.votes }} votes, {{ tip.author.username }}, {{ tip.created }}</p>
+        {% if request.user.reputation.rep >= 15 or request.user.username == tip.author.username %}
+            <a href="/vote?id={{ tip.id }}&type=1">Upvote</a>
+            <a href="/vote?id={{ tip.id }}&type=-1">Downvote</a>
+        {% endif %}
+        {% if request.user.reputation.rep >= 30 or request.user.username == tip.author.username %}
+            <a href="/delete?id={{ tip.id }}">Delete</a>
+        {% endif %}
+        <hr>
+    {% endfor %}
+{% endblock %}

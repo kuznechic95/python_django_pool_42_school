@@ -1,0 +1,49 @@
+
+{% extends 'base.html' %}
+
+{% block headlines %}
+Home sweet home
+{% endblock %}
+{% block content %}
+{% include 'nav.html' %}
+
+<h1> Welcome to my site tips and tricks </h1>
+
+
+{% if user.is_authenticated %}
+<h2> Enter a new tip or trick</h2>
+<div>
+    <form method="POST" class='form'>
+        {% csrf_token %}
+        {{ form }}
+        <input type='submit' name='tipform' value='Submit'>
+    </form>
+</div>
+{% endif %}
+<div>
+    <h2>All the tips and tricks of the site</h2>
+    <div class='tricklist'>
+    <ul class='list-group'>
+    {% for tip in tips %}
+        <li class='list-group-item'>
+
+            {{ tip }}
+            {% if user.is_authenticated %}
+                <form method='POST' class='form'>
+                {% csrf_token %}
+                <input type='hidden' name='tipid' value='{{ tip.id }}'>
+                {% if  tip.auteur == request.user.username or perms.ex.deletetip %}
+                    <input type='submit' name='deletetip' value='Delete'>
+                {% endif %}
+                <input type='submit' name='upvote' value='Upvote'>
+                <input type='submit' name='downvote' value='Downvote'>
+                </form>
+
+            {% endif %}
+        </li>
+    {% endfor %}
+    </ul>
+    </div>
+</div>
+
+{% endblock %}

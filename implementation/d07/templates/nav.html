@@ -1,0 +1,39 @@
+<nav class="navbar  navbar-inverse">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">
+          {% if user.is_authenticated %}
+           Logged as {{ user }}
+          {% else %}
+            Hello
+           {% endif %}
+        </a>
+      </div>
+      <ul class="nav navbar-nav">
+        <li><a href="/">Home</a></li>
+        <li><a href="{% url 'articles' %}">Articles</a> </li>
+
+         {% if user.is_authenticated %}
+         <li><a href="{% url 'publications' %}">Publications</a> </li>
+         <li><a href="{% url 'favorites' %}">Favorites</a> </li>
+
+          <li><a href="{% url 'logout' %}">Logout</a> </li>
+          {% else %}
+          <li><a href="{% url 'signup' %}">Signup</a> </li>
+            {% if  "/accounts/login" not in request.get_full_path %}
+            </ul>
+            <form class="navbar-form navbar-right" method="POST" action="{% url 'login' %}">
+                {% csrf_token %}
+                <div class="form-group">
+                    <input class="form-control" type="text" name="username" placeholder="Username">
+                </div>
+                <div class="form-group">
+                    <input class="form-control" type="password" name="password" placeholder="Password">
+                </div>
+            <button type="submit" class="btn btn-default" value="login" >Login</button>
+            </form>
+            {% endif %}
+        {% endif %}
+
+    </div>
+  </nav>

@@ -1,0 +1,21 @@
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <a class="navbar-brand" href="#">
+	  {% if user.is_authenticated %}
+		Hello {{ user }}
+		{% elif usador %}
+		Hello {{ usador }}!
+		{% endif %}</a>
+    </div>
+    <ul class="nav navbar-nav">
+      <li><a href="/">Home</a></li>
+	   {% if user.is_authenticated %}
+		<li><a href="/logout/">logout</a> </li>
+		{% elif usador %}
+		<li><a href="/signup/">Signup</a></li>
+		<li><a href="/login/">Login</a> </li>
+		{% endif %}
+    </ul>
+  </div>
+</nav>

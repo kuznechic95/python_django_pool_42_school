@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Star War Episodes</title>
+</head>
+<body>
+<table>
+    <tr>
+        <th>Episode Number</th>
+        <th>Title</th>
+        <th>Opening Crawl</th>
+        <th>Producer</th>
+        <th>Date</th>
+        <th>Director</th>
+        <th>Created</th>
+        <th>Updated</th>
+    </tr>
+    {% for elem in data %}
+    <tr>
+        {% for case in elem %}
+            <td style="padding: 10px; border: 1px solid black;">{{case}}</td>
+        {% endfor %}
+    </tr>
+    {% endfor %}
+</table>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>{title}</title>
+	<style>
+		table, th, td {
+			border-style: solid;
+			border-collapse: collapse;
+			border-color: blue;
+			padding: 5pt
+		}
+	</style>
+</head>
+<body>
+	<p>"-Who are you?
+	-A {name}!"</p>
+	<h1>{first_name} {last_name} {title}</h1>
+	<table>
+	<tr>
+	<th>Category</th><th>Information</th>
+	</tr>
+	<tr>
+	<td>First name</td><td>{first_name}</td>
+	</tr>
+	<tr>
+	<td>Last name</td><td>{last_name}</td>
+	</tr>
+	<tr>
+	<td>Age</td><td>{age}</td>
+	</tr>
+	<tr>
+	<td>Profession</td><td>{profession}</td>
+	</tr>
+	</table>
+</body>
+</html>

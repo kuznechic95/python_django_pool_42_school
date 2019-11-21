@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Update</title>
+</head>
+<body>
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{ form }}
+        <select name="select">
+        {% for elem in data %}
+            <option value="{{elem.episode_nb}}">{{elem.title}}</option>
+        {% endfor %}
+        </select>
+        <button type="submit">Update</button>
+    </form>
+</body>
+</html>

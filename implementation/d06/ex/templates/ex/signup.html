@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block headlines %}
+Inscription
+{% endblock %}
+{% block content %}
+{% include 'nav.html' %}
+
+<h1> Please, signup </h1>
+<div>
+    <form method="POST" class='form'>
+        {% csrf_token %}
+        {{ form.as_p }}
+        <input type='submit' value='Submit'>
+    </form>
+</div>
+
+{% endblock %}

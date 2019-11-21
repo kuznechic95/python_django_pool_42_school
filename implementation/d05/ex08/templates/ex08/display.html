@@ -1,0 +1,18 @@
+{% if people %}
+    <table style="width:100%">
+      <tr>
+        <th>name</th>
+        <th>homeworld</th>
+        <th>climate</th>
+      </tr>
+        {% for human in people %}
+          <tr>
+          {% for elem in human %}
+            <td>{{ elem }}</td>
+          {% endfor %}
+          </tr>
+        {% endfor %}
+    </table>
+{% else %}
+    No data available
+{% endif %}

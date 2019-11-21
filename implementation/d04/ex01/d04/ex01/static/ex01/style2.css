@@ -1,0 +1,21 @@
+html, body {
+    height: 100%;
+    background-color: #d4c68c;
+}
+
+body {
+    padding: 20pt;
+}
+
+h1 {
+    color: red;
+}
+
+li {
+    display: inline;
+}
+
+iframe {
+    height: 90%;
+    width: 100%;
+}

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>
+    {% block headlines %}
+    {% endblock %}
+  </title>
+  <style>
+  .myclass{
+      white-space: nowrap;
+      max-width: 20px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+  }
+  </style>
+{% load bootstrap3 %}
+
+{# Load CSS and JavaScript #}
+{% bootstrap_css %}
+{% bootstrap_javascript jquery=1 %}
+
+</head>
+<body>
+    {% include 'nav.html' %}
+
+    {# Display django.contrib.messages as Bootstrap alerts #}
+    {% bootstrap_messages %}
+
+
+  {% block content %}
+  {% endblock %}
+
+</body>
+</html>
